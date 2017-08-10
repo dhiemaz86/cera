@@ -34,11 +34,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                       <div class="col-sm-10">
                       <select class="form-control" name="idKategori">
                                 <?php
-                include "../lib/koneksi.php";
-                $kueriKategori= mysqli_query($koneksi, "select * from kategori");
+                include "lib/koneksi.php";
+                $kueriKategori= mysqli_query($koneksi, "select * from cera_product_category");
                 while($kat=mysqli_fetch_array($kueriKategori)){
                 ?>
-                        <option value="<?php echo $kat['id_kategori']; ?>"><?php echo $kat['nama_kategori']; ?></option>
+                        <option value="<?php echo $kat['pc_id']; ?>"><?php echo $kat['pc_name']; ?></option>
                   <?php } ?>
                       </select>
                     </div>

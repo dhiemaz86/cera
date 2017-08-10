@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Pesanan</small>
+            <small>Quotation</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Pesanan</li>
+            <li class="active">Quotation</li>
           </ol>
         </section>
         <!-- Main content -->
@@ -24,7 +24,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data Pesanan</h3>
+                  <h3 class="box-title">Data Quotation</h3>
 				  <div class="box-tools">
                     <div class="input-group" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -37,24 +37,23 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
-                      <th>ID Pemesanan</th>
-                      <th>Nama Pelanggan</th>
+                      <th>Quotation No</th>
+                      <th>Nama Client</th>
 					            <th>Alamat</th>
                       <th>Email</th>
-                      <th>Status Pembayaran</th>
                       <th>No HP</th>
-                      <th>Tanggal Pesan</th>
+                      <th>Tanggal</th>
                       <th>Status</th>
 					            <th style="width: 110px">Aksi</th>
                     </tr>
       					<?php
-      					include "../lib/config.php";
-      					include "../lib/koneksi.php";
+      					include "lib/config.php";
+      					include "lib/koneksi.php";
 
                 $page = trim(@$_GET['page']) == ''? 1 : $_GET['page'];
                 $offset = ($page*2);
 
-                $myq = "select pesan.*, pelanggan.*, pesan.nama as pesan_nama, pesan.alamat as pesan_alamat, pesan.email as pesan_email, pesan.no_hp as pesan_no_hp from pesan left join pelanggan on pesan.id_pelanggan = pelanggan.id_pelanggan order by pesan.tgl_pesan desc";
+                $myq = "select * from cera_sales JOIN cera_sales_item ON cera_sales.sales_id = cera_sales_item.si_sales_id order by sales_quotation_no desc";
 
       					$kueriPesan= mysqli_query($koneksi, $myq);
       					while($pro=mysqli_fetch_array($kueriPesan)){
@@ -67,7 +66,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                       <td><?php echo $pro['status_pembayaran']; ?></td>
                       <td><?php echo trim($pro['no_hp']) === '' ? $pro['pesan_no_hp'] : $pro['no_hp']; ?></td>
                       <td><?php echo $pro['tgl_pesan']; ?></td>
-                      <td><?php echo $pro['status_pesan']; ?></td>
 					            <td>
 
 
@@ -96,7 +94,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div><!-- /.box-body -->
 
 				     <div class="box-footer">
-              <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_pesan"><button class="btn btn-primary">Print</button></a>
+             <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_quotation"><button class="btn btn-primary">Tambah Quotation</button></a>
+              <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_quotation"><button class="btn btn-primary">Print</button></a>
                   </div><!-- /.box-footer -->
               </div><!-- /.box -->
 

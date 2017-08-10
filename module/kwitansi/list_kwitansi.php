@@ -2,7 +2,7 @@
 // session_start();
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
    echo "<center>Untuk mengakses modul, Anda harus login <br>";
-   echo "<a href=/index.php><b>LOGIN</b></a></center>";
+   echo "<a href=../../index.php><b>LOGIN</b></a></center>";
 } else { ?>
      <!-- Content Wrapper. Contains page content -->
      <div class="content-wrapper">
@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
        <section class="content-header">
          <h1>
            Manajemen
-           <small>Admin</small>
+           <small>Kwitansi</small>
          </h1>
          <ol class="breadcrumb">
            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-           <li class="active">Admin</li>
+           <li class="active">Kwitansi</li>
          </ol>
        </section>
 
@@ -25,7 +25,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
            <div class="col-xs-12">
              <div class="box">
                <div class="box-header">
-                 <h3 class="box-title">Data Admin</h3>
+                 <h3 class="box-title">Data Kwitansi</h3>
 
          <div class="box-tools">
 
@@ -41,29 +41,41 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                <div class="box-body table-responsive no-padding">
                  <table class="table table-hover">
                    <tr>
-                     <th>Admin</th>
-                    <th style="width: 110px">Aksi</th>
+                     <th>Nama Kwitansi</th>
+                     <th>Alamat</th>
+                     <th>Email</th>
+                     <th>No HP</th>
+
+            <th style="width: 110px">Aksi</th>
                    </tr>
                <?php
-               include "/lib/config.php";
-               include "/lib/koneksi.php";
-               $kueriAdmin= mysqli_query($koneksi, "select * from admin");
-               while($kat=mysqli_fetch_array($kueriAdmin)){
+               include "lib/config.php";
+               include "lib/koneksi.php";
+               $kueriKategori= mysqli_query($koneksi,"select * from Kwitansi");
+               while($kat=mysqli_fetch_array($kueriKategori)){
                ?>
-                  <tr>
-                    <td><?php echo $kat['nama_admin']; ?></td>
-                    <td><div class="btn-group">
-                            <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_admin&id_admin=<?php echo $kat['id_admin']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
-                            <a href="<?php echo $admin_url; ?>module/admin/aksi_hapus.php?id_admin=<?php echo $kat['id_admin'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
-                        </div>
-                    </td>
-                  </tr>
+                   <tr>
+
+                     <td><?php echo $kat['nama_Kwitansi']; ?></td>
+                     <td><?php echo $kat['alamat']; ?></td>
+                     <td><?php echo $kat['email']; ?></td>
+                     <td><?php echo $kat['no_hp']; ?></td>
+
+           <td>
+            <div class="btn-group">
+
+                         <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_Kwitansi&id_Kwitansi=<?php echo $kat['id_Kwitansi']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                         <a href="<?php echo $admin_url; ?>module/Kwitansi/aksi_hapus.php?id_Kwitansi=<?php echo $kat['id_Kwitansi'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
+                       </div>
+           </td>
+                   </tr>
              <?php } ?>
                  </table>
                </div><!-- /.box-body -->
 
             <div class="box-footer">
-            <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_admin"><button class="btn btn-primary">Tambah Admin</button></a>
+       <a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_Kwitansi"><button class="btn btn-primary">Tambah Kwitansi</button></a>
+       <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_Kwitansi"><button class="btn btn-primary">Print Kwitansi</button></a>
                  </div><!-- /.box-footer -->
              </div><!-- /.box -->
 

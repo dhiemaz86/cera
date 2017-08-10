@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Pelanggan</small>
+            <small>Invoice</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active">Pelanggan</li>
+            <li class="active">Invoice</li>
           </ol>
         </section>
 
@@ -25,7 +25,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data Pelanggan</h3>
+                  <h3 class="box-title">Data Invoice</h3>
 
 				  <div class="box-tools">
 
@@ -41,7 +41,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
-                      <th>Nama Pelanggan</th>
+                      <th>Nama Invoice</th>
                       <th>Username</th>
                       <th>Password</th>
                       <th>Email</th>
@@ -50,10 +50,10 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 					            <th style="width: 110px">Aksi</th>
                     </tr>
       					<?php
-      					include "../lib/config.php";
-      					include "../lib/koneksi.php";
-      					$kueriPelanggan= mysqli_query($koneksi,"select * from pelanggan order by id_pelanggan desc");
-      					while($mem=mysqli_fetch_array($kueriPelanggan)){
+      					include "lib/config.php";
+      					include "lib/koneksi.php";
+      					$kueriInvoice= mysqli_query($koneksi,"select * from Invoice order by id_Invoice desc");
+      					while($mem=mysqli_fetch_array($kueriInvoice)){
       					?>
                     <tr>
 
@@ -66,8 +66,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 					  <td>
 					   <div class="btn-group">
 
-                          <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_pelanggan&id_pelanggan=<?php echo $mem['id_pelanggan']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
-                          <a href="<?php echo $admin_url; ?>module/pelanggan/aksi_hapus.php?id_pelanggan=<?php echo $mem['id_pelanggan'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
+                          <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_Invoice&id_Invoice=<?php echo $mem['id_Invoice']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                          <a href="<?php echo $admin_url; ?>module/Invoice/aksi_hapus.php?id_Invoice=<?php echo $mem['id_Invoice'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
                         </div>
 					  </td>
                     </tr>
@@ -76,8 +76,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div><!-- /.box-body -->
 
                 <div class="box-footer">
-                  <a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_pelanggan"><button class="btn btn-primary">Tambah Pelanggan</button></a>
-                  <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_member"><button class="btn btn-primary">Print Pelanggan</button></a>
+                  <a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_Invoice"><button class="btn btn-primary">Tambah Invoice</button></a>
+                  <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_member"><button class="btn btn-primary">Print Invoice</button></a>
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
 

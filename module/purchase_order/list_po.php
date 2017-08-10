@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Penjualan</small>
+            <small>Purchase Order</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Penjualan</li>
+            <li class="active">Purchase Order</li>
           </ol>
         </section>
         <!-- Main content -->
@@ -24,7 +24,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data Penjualan</h3>
+                  <h3 class="box-title">Data Purchase Order</h3>
 				  <div class="box-tools">
                     <div class="input-group" style="width: 150px;">
                       <input type="hidden" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -37,7 +37,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
-                      <th>ID Penjualan</th>
+                      <th>ID Purchase Order</th>
                       <th>Nama Pelanggan</th>
 					            <th>Alamat</th>
                       <th>Email</th>
@@ -47,8 +47,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 					            <th style="width: 110px">Aksi</th>
                     </tr>
       					<?php
-      					include "../lib/config.php";
-      					include "../lib/koneksi.php";
+      					include "lib/config.php";
+      					include "lib/koneksi.php";
 
                 $page = trim(@$_GET['page']) == ''? 1 : $_GET['page'];
                 $offset = ($page*2);
@@ -69,8 +69,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 					            <td>
 					                <div class="btn-group">
                           <a href="javascript::void(0)" class="btn btn-info" data-toggle="modal" data-target="#modal<?php echo $pro['id_jual'];?>"><i class='fa fa-home'></i></a>
-                          <a href="<?php echo $admin_url; ?>module/penjualan/edit_status.php?id_jual=<?php echo $pro['id_jual']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></a>
-                          <a href="<?php echo $admin_url; ?>module/penjualan/aksi_hapus.php?id_jual=<?php echo $pro['id_jual'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></a>
+                          <a href="<?php echo $admin_url; ?>module/Purchase Order/edit_status.php?id_jual=<?php echo $pro['id_jual']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></a>
+                          <a href="<?php echo $admin_url; ?>module/Purchase Order/aksi_hapus.php?id_jual=<?php echo $pro['id_jual'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></a>
                       </div></td>
                     </tr>
               <?php } ?>
@@ -102,7 +102,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Detail dari Penjualan #<?php echo $pro['id_jual'];?></h4>
+                        <h4 class="modal-title" id="myModalLabel">Detail dari Purchase Order #<?php echo $pro['id_jual'];?></h4>
                       </div>
                       <div class="modal-body">
 

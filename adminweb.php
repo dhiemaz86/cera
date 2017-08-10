@@ -1,5 +1,5 @@
 <?php
-include "/lib/config.php";
+include "lib/config.php";
 session_start();
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
     echo "<center>Untuk mengakses modul, Anda harus login <br>";
@@ -141,7 +141,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 							<a href="adminweb.php?module=marketing_sales"> <i class="fa fa-bars"></i> <span>Marketing Sales</span> </a>
 						</li>
 						<li>
-							<a href="adminweb.php?module=production"> <i class="fa fa-th"></i> <span>Production</span> </a>
+							<a href="adminweb.php?module=product"> <i class="fa fa-th"></i> <span>Products</span> </a>
 						</li>
 						<li>
 							<a href="adminweb.php?module=quotation"> <i class="fa fa-money"></i> <span>Quotation</span> </a>
@@ -176,86 +176,76 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 include "module/home/index.php";
 
 			} elseif ($_GET['module'] == 'marketing_sales') {
-                include "module/marketing_sales/list_user.php";
-            } elseif ($_GET['module'] == 'tambah_user') {
-                include "module/marketing_sales/tambah_user.php";
-            } elseif ($_GET['module'] == 'edit_kategori') {
+                include "module/marketing_sales/list_marketing.php";
+            } elseif ($_GET['module'] == 'tambah_marketing') {
+                include "module/marketing_sales/form_tambah.php";
+            } elseif ($_GET['module'] == 'edit_marketingi') {
                 include "module/marketing_sales/form_edit.php";
-            } elseif ($_GET['module'] == 'simpan_user') {
+            } elseif ($_GET['module'] == 'simpan_marketing') {
                 include "module/marketing_sales/aksi_simpan.php";
 
-             
-
-            } elseif ($_GET['module'] == 'production') {
-                include "module/production/list_produk.php";
+            } elseif ($_GET['module'] == 'product') {
+                include "module/product/list_produk.php";
             } elseif ($_GET['module'] == 'tambah_produk') {
-                include "module/production/form_tambah.php";
+                include "module/product/form_tambah.php";
             } elseif ($_GET['module'] == 'edit_produk') {
-                include "module/production/form_edit.php";
+                include "module/product/form_edit.php";
             } elseif ($_GET['module'] == 'print_produk') {
-                include "module/production/print_produk.php";
+                include "module/product/print_produk.php";
 
             } elseif ($_GET['module'] == 'quotation') {
-                include "module/quotation/list_pesan.php";
+                include "module/quotation/list_quotation.php";
             } elseif ($_GET['module'] == 'tambah_pesan') {
                 include "module/quotation/form_tambah.php";
-            } elseif ($_GET['module'] == 'edit_pesan') {
+            } elseif ($_GET['module'] == 'edit_quotationn') {
                 include "module/quotation/form_edit.php";
-            }elseif ($_GET['module'] == 'print_pesan') {
+            }elseif ($_GET['module'] == 'print_quotation') {
                 include "module/quotation/print_pesan.php";
 
             } elseif ($_GET['module'] == 'purchase_order') {
-                include "module/purchase_order/list_jual.php";
-            } elseif ($_GET['module'] == 'tambah_jual') {
+                include "module/purchase_order/list_po.php";
+            } elseif ($_GET['module'] == 'tambah_po') {
                 include "module/purchase_order/form_tambah.php";
             } elseif ($_GET['module'] == 'edit_jual') {
                 include "module/purchase_order/form_edit.php";
-           } elseif ($_GET['module'] == 'print_jual') {
-                include "module/purchase_order/printjual.php";
-
-            } elseif ($_GET['module'] == 'pembelian') {
-                include "module/pembelian/list_beli.php";
-            } elseif ($_GET['module'] == 'tambah_beli') {
-                include "module/pembelian/form_tambah.php";
-            } elseif ($_GET['module'] == 'edit_beli') {
-                include "module/pembelian/form_edit.php";
-            } elseif ($_GET['module'] == 'print_beli') {
-                include "module/pembelian/print_beli.php";
+           } elseif ($_GET['module'] == 'print_po') {
+                include "module/purchase_order/print_po.php";
 
             } elseif ($_GET['module']=='invoice') {
-            	include "module/invoice/list_member.php";
-           	} elseif ($_GET['module'] == 'tambah_pelanggan') {
+            	include "module/invoice/list_invoice.php";
+           	} elseif ($_GET['module'] == 'tambah_invoice') {
                include "module/invoice/form_tambah.php";
-            } elseif ($_GET['module'] == 'edit_pelanggan') {
+            } elseif ($_GET['module'] == 'edit_invoice') {
                include "module/invoice/form_edit.php";
-             } elseif ($_GET['module'] == 'print_member') {
-                include "module/invoice/print_member.php";
+            } elseif ($_GET['module'] == 'print_invoice') {
+                include "module/invoice/print_invoice.php";
 
             } elseif ($_GET['module']=='kwitansi') {
-              include "module/kwitansi/list_admin.php";
-            } elseif ($_GET['module'] == 'tambah_admin') {
+              include "module/kwitansi/list_kwitansi.php";
+            } elseif ($_GET['module'] == 'tambah_kwitansi') {
                include "module/kwitansi/form_tambah.php";
             } elseif ($_GET['module'] == 'edit_admin') {
                include "module/kwitansi/form_edit.php";
+            } elseif ($_GET['module'] == 'print_kwitansi') {
+                include "module/invoice/print_kwitansi.php";
 
             } elseif ($_GET['module'] == 'client') {
-                include "module/client/list_supplier.php";
-            } elseif ($_GET['module'] == 'tambah_supplier') {
+                include "module/client/list_client.php";
+            } elseif ($_GET['module'] == 'tambah_client') {
                 include "module/client/form_tambah.php";
-            } elseif ($_GET['module'] == 'edit_supplier') {
+            } elseif ($_GET['module'] == 'edit_client') {
                 include "module/client/form_edit.php";
-            } elseif ($_GET['module'] == 'print_supplier') {
-                include "module/client/print_supplier.php";
-           
+            } elseif ($_GET['module'] == 'print_client') {
+                include "module/client/print_client.php";
 
             } elseif ($_GET['module'] == 'rekap_order') {
-                include "module/rekap_order/list_supplier.php";
-            } elseif ($_GET['module'] == 'tambah_supplier') {
+                include "module/rekap_order/list_rekap.php";
+            } elseif ($_GET['module'] == 'tambah_rekap') {
                 include "module/rekap_order/form_tambah.php";
-            } elseif ($_GET['module'] == 'edit_supplier') {
+            } elseif ($_GET['module'] == 'edit_rekap') {
                 include "module/rekap_order/form_edit.php";
-            } elseif ($_GET['module'] == 'print_supplier') {
-                include "module/rekap_order/print_supplier.php";
+            } elseif ($_GET['module'] == 'print_rekap') {
+                include "module/rekap_order/print_rekap.php";
             }
 
             else {

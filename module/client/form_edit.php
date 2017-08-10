@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Admin</small>
+            <small>Client</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Edit Admin</li>
+            <li class="active">Edit Client</li>
           </ol>
         </section>
 
@@ -25,44 +25,37 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Form Edit Admin</h3>
+                  <h3 class="box-title">Form Edit Client</h3>
               </div>
               <?php
-              include "../lib/config.php";
-              include "../lib/koneksi.php";
+              include "lib/config.php";
+              include "lib/koneksi.php";
 
-              $idAdmin=$_GET['id_admin'];
-              $queryEdit=mysqli_query($koneksi, "SELECT * FROM admin WHERE id_admin='$idAdmin'");
+              $idClient=$_GET['id_client'];
+              $queryEdit=mysqli_query($koneksi, "SELECT * FROM cera_client WHERE id_client='$idClient'");
 
               $hasilQuery=mysqli_fetch_array($queryEdit);
-			        $idAdmin=$hasilQuery['id_admin'];
-              $namaAdmin=$hasilQuery['nama_admin'];
-              $username=$hasilQuery['username'];
-              $password=$hasilQuery['password'];
-              $email=$hasilQuery['email'];
+			        $idClient=$hasilQuery['id_client'];
+              $namaClient=$hasilQuery['client_name'];
+              $alamat=$hasilQuery['address_client'];
+              $email=$hasilQuery['email_client'];
+              $phoneClient=$hasilQuery['phone_client'];
 
               ?>
-			        <form class="form-horizontal" action="../admin/module/admin/aksi_edit.php" method="post">
-					    <input type="hidden" name="id_admin" value="<?php echo $idAdmin; ?>">
+			        <form class="form-horizontal" action="module/client/aksi_edit.php" method="post">
+					    <input type="hidden" name="id_client" value="<?php echo $idClient; ?>">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Admin</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Client</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="namaAdmin" name="nama_admin" placeholder="Nama Admin" value="<?php echo $namaAdmin; ?>">
+                        <input type="text" class="form-control" id="namaClient" name="client_name" placeholder="Nama Client" value="<?php echo $namaClient; ?>">
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Alamat</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo $username; ?>">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="password" name="password" placeholder="Password" value="<?php echo $password; ?>">
+                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="<?php echo $alamat; ?>">
                       </div>
                     </div>
 
@@ -70,6 +63,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                       <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $email; ?>">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Telepon/No HP</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="phoneClient" name="phone_client" placeholder="Phone" value="<?php echo $phoneClient; ?>">
                       </div>
                     </div>
 

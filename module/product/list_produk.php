@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Kopi</small>
+            <small>Products</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Kopi</li>
+            <li class="active">Products</li>
           </ol>
         </section>
         <!-- Main content -->
@@ -24,7 +24,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data Kopi</h3>
+                  <h3 class="box-title">Data Products</h3>
 				  <div class="box-tools">
                     <div class="input-group" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -37,37 +37,36 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
-                      <th>Kopi</th>
-                      <th>Proses</th>
+                      <th>Nama Produk</th>
                       <th>Kategori</th>
+                      <th>Kode Produk</th>
                       <th>Berat</th>
-					            <th>Stok</th>
-                      <th>Harga</th>
+                      <th>Status</th>
                       <th>Gambar</th>
                       <th>Deskripsi</th>
 					            <th style="width: 110px">Aksi</th>
                     </tr>
       					<?php
-      					include "../lib/config.php";
-      					include "../lib/koneksi.php";
-      					$kueriKopi= mysqli_query($koneksi,"select id_kopi, nama_kopi, proses, nama_kategori, berat, stok, harga, gambar, deskripsi from kopi join kategori on kopi.id_kategori = kategori.id_kategori");
-      					while($pro=mysqli_fetch_array($kueriKopi)){
+      					include "lib/config.php";
+      					include "lib/koneksi.php";
+      					$kueriProduk= mysqli_query($koneksi,"SELECT * FROM cera_product_category JOIN cera_product ON cera_product.product_pc_id = cera_product_category.pc_id JOIN cera_product_price ON cera_product.id_product = cera_product_price.pp_product_id");
+      					while($pro=mysqli_fetch_array($kueriProduk)){
       					?>
                     <tr>
 
-                      <td><?php echo $pro['nama_kopi']; ?></td>
-                      <td><?php echo $pro['proses']; ?></td>
-                      <td><?php echo $pro['nama_kategori']; ?></td>
-                      <td><?php echo $pro['berat']; ?></td>
-                      <td><?php echo $pro['stok']; ?></td>
-                      <td><?php echo $pro['harga']; ?></td>
+                      <td><?php echo $pro['product_name']; ?></td>
+                      <td><?php echo $pro['pc_name']; ?></td>
+                      <td><?php echo $pro['product_code']; ?></td>
+                      <td><?php echo $pro['product_size']; ?></td>
+                      <td><?php echo $pro['product_status']; ?></td>
+
                      
-					            <td><img src="upload/<?php echo $pro['gambar'];?>" height="100" width="150"></td>
-                       <td><?php echo $pro['deskripsi']; ?></td>
+					            <td><img src="upload/<?php echo $pro['product_img'];?>" height="100" width="150"></td>
+                       <td><?php echo $pro['product_desc']; ?></td>
 					            <td>
 					                <div class="btn-group">
-                          <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_produk&id_kopi=<?php echo $pro['id_kopi']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
-                          <a href="<?php echo $admin_url; ?>module/kopi/aksi_hapus.php?id_kopi=<?php echo $pro['id_kopi'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
+                          <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_produk&id_Products=<?php echo $pro['id_Products']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                          <a href="<?php echo $admin_url; ?>module/Products/aksi_hapus.php?id_Products=<?php echo $pro['id_Products'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
                       </div></td>
                     </tr>
               <?php } ?>
@@ -75,7 +74,9 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div><!-- /.box-body -->
 
 				     <div class="box-footer">
-				<a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_produk"><button class="btn btn-primary">Tambah Produk</button></a>
+				      <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_produk"><button class="btn btn-primary">Tambah Produk</button></a>
+              <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_produk"><button class="btn btn-primary">Print</button></a>
+
                   </div><!-- /.box-footer -->
               </div><!-- /.box -->
 

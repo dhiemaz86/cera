@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Pelanggan</small>
+            <small>Marketing</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active">User</li>
+            <li class="active">Marketing</li>
           </ol>
         </section>
 
@@ -25,7 +25,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data User</h3>
+                  <h3 class="box-title">Data Marketing</h3>
 
 				  <div class="box-tools">
 
@@ -74,8 +74,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div><!-- /.box-body -->
 
                 <div class="box-footer">
-                  <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_user"><button class="btn btn-primary">Tambah User</button></a>
-                  <a href="<?php echo $base_url; ?>adminweb.php?module=print_member"><button class="btn btn-primary">Print Pelanggan</button></a>
+                  <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_marketing"><button class="btn btn-primary">Tambah</button></a>
+                  <a href="<?php echo $base_url; ?>adminweb.php?module=print_marketing"><button class="btn btn-primary">Print</button></a>
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
 

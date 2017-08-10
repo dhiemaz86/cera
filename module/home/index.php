@@ -1,6 +1,6 @@
 <?php
-include "/lib/config.php";
-include "/lib/koneksi.php";
+include "lib/config.php";
+include "lib/koneksi.php";
 
 // session_start();
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
@@ -77,8 +77,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 <div class="info-box-content">
                   <span class="info-box-text">Kwitansi</span>
                   <?php
-                  $kueriPelanggan= mysqli_query($koneksi, "select count(sales_id) as jumlah FROM cera_sales");
-                  while($kat=mysqli_fetch_array($kueriPelanggan)){
+                  $kueriKwitansi= mysqli_query($koneksi, "select count(sales_id) as jumlah FROM cera_sales");
+                  while($kat=mysqli_fetch_array($kueriKwitansi)){
                   ?>
                   <span class="info-box-number"><?php echo $kat['jumlah']; ?></span>
                   <?php } ?>
@@ -114,10 +114,10 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         <strong>Goal Completion</strong>
                       </p>
                       <div class="progress-group">
-                        <span class="progress-text">Pembelian</span>
+                        <span class="progress-text">Quotation</span>
                         <?php
-                  $kueriPembelian= mysqli_query($koneksi, "select count(*) as jumlah FROM beli");
-                  while($kat=mysqli_fetch_array($kueriPembelian)){
+                  $kueriQuotation= mysqli_query($koneksi, "select count(sales_Quotation_no) as jumlah FROM cera_sales");
+                  while($kat=mysqli_fetch_array($kueriQuotation)){
                   ?>
                         <span class="progress-number"><b><?php echo $kat['jumlah']; ?></b></span>
                         <div class="progress sm">
@@ -128,9 +128,9 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                       ?>
                       </div><!-- /.progress-group -->
                       <div class="progress-group">
-                        <span class="progress-text">Pemesanan</span>
+                        <span class="progress-text">Purchase Order</span>
                         <?php
-                  $kueriPemesanan= mysqli_query($koneksi, "select count(*) as jumlah FROM pesan");
+                  $kueriPemesanan= mysqli_query($koneksi, "select count(sales_tgl_po) as jumlah FROM cera_sales");
                   while($kat=mysqli_fetch_array($kueriPemesanan)){
                   ?>
                         <span class="progress-number"><b><?php echo $kat['jumlah']; ?></b></span>
@@ -142,9 +142,9 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         ?>
                       </div><!-- /.progress-group -->
                       <div class="progress-group">
-                        <span class="progress-text">Penjualan</span>
-                        <?php
-                  $kueriPenjualan= mysqli_query($koneksi, "select count(*) as jumlah FROM jual");
+                        <span class="progress-text">Invoice</span>
+                         <?php
+                  $kueriPenjualan= mysqli_query($koneksi, "select count(sales_invoice_no) as jumlah FROM cera_sales");
                   while($kat=mysqli_fetch_array($kueriPenjualan)){
                   ?>
                         <span class="progress-number"><b><?php echo $kat['jumlah']; ?></b></span>
@@ -156,10 +156,10 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         </div>
                       </div><!-- /.progress-group -->
                       <div class="progress-group">
-                        <span class="progress-text">Pelanggan</span>
+                        <span class="progress-text">Kwitansi</span>
                         <?php
-                  $kueriPelanggan= mysqli_query($koneksi, "select count(*) as jumlah FROM pelanggan");
-                  while($kat=mysqli_fetch_array($kueriPelanggan)){
+                  $kueriKwitansi= mysqli_query($koneksi, "select count(sales_id) as jumlah FROM cera_sales");
+                  while($kat=mysqli_fetch_array($kueriKwitansi)){
                   ?>
                         <span class="progress-number"><b><?php echo $kat['jumlah']; ?></b></span>
                         <div class="progress sm">
@@ -177,7 +177,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 
                     <div class="col-sm-3 col-xs-6">
                     <?php
-                  $kueriPenjualan= mysqli_query($koneksi, "select sum(harga) as total FROM detail_jual");
+                  $kueriPenjualan= mysqli_query($koneksi, "select sum(si_item_price) as total FROM cera_sales_item");
                   while($kat=mysqli_fetch_array($kueriPenjualan)){
                   ?>
                       <div class="description-block border-right">
@@ -188,13 +188,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                     </div><!-- /.col -->
                     <div class="col-sm-3 col-xs-6">
                     <?php
-                  $kueriPembelian= mysqli_query($koneksi, "select sum(subtotal) as total FROM detail_beli");
-                  while($kat=mysqli_fetch_array($kueriPembelian)){
+                  $kueriProduk= mysqli_query($koneksi, "select sum(si_item_qty) as jumlah FROM cera_sales_item");
+                  while($kat=mysqli_fetch_array($kueriProduk)){
                   ?>
                       <div class="description-block border-right">
                         <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                        <h5 class="description-header">Rp <?php echo $kat['total']; ?></h5> <?php } ?>
-                        <span class="description-text">TOTAL COST</span>
+                        <h5 class="description-header"><?php echo $kat['jumlah']; ?> pcs</h5> <?php } ?>
+                        <span class="description-text">TOTAL PRORDUCT SOLD</span>
                       </div><!-- /.description-block -->
                     </div><!-- /.col -->
                     <div class="col-sm-3 col-xs-6">

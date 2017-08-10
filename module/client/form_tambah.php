@@ -25,28 +25,21 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Form Tambah Admin</h3>
+                  <h3 class="box-title">Form Tambah Client</h3>
               </div>
-			        <form class="form-horizontal" action="module/admin/aksi_simpan.php" method="post">
+			        <form class="form-horizontal" action="module/client/aksi_simpan.php" method="post">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Admin</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Client</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="namaAdmin" name="nama_admin" placeholder="Nama Admin">
+                        <input type="text" class="form-control" id="namaClient" name="nama_client" placeholder="Nama Client">
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Alamat</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat">
                       </div>
                     </div>
 
@@ -54,6 +47,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                       <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Telepon/HP</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="phoneClient" name="phone_client" placeholder="Phone Client">
                       </div>
                     </div>
 

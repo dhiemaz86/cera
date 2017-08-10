@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
        <section class="content-header">
          <h1>
            Manajemen
-           <small>Admin</small>
+           <small>Client</small>
          </h1>
          <ol class="breadcrumb">
            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-           <li class="active">Admin</li>
+           <li class="active">Client</li>
          </ol>
        </section>
 
@@ -25,7 +25,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
            <div class="col-xs-12">
              <div class="box">
                <div class="box-header">
-                 <h3 class="box-title">Data Admin</h3>
+                 <h3 class="box-title">Data Client</h3>
 
          <div class="box-tools">
 
@@ -41,20 +41,27 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                <div class="box-body table-responsive no-padding">
                  <table class="table table-hover">
                    <tr>
-                     <th>Admin</th>
+                     <th>Client</th>
+                     <th>Alamat</th>
+                      <th>Email</th>
+                      <th>Telepon/HP</th>
                     <th style="width: 110px">Aksi</th>
                    </tr>
                <?php
-               include "/lib/config.php";
-               include "/lib/koneksi.php";
-               $kueriAdmin= mysqli_query($koneksi, "select * from admin");
-               while($kat=mysqli_fetch_array($kueriAdmin)){
+               include "lib/config.php";
+               include "lib/koneksi.php";
+               $kueriClient= mysqli_query($koneksi, "select * from cera_client");
+               while($kat=mysqli_fetch_array($kueriClient)){
                ?>
                   <tr>
-                    <td><?php echo $kat['nama_admin']; ?></td>
+                    <td><?php echo $kat['client_name']; ?></td>
+                    <td><?php echo $kat['address_client']; ?></td>
+                    <td><?php echo $kat['email_client']; ?></td>
+                    <td><?php echo $kat['phone_client']; ?></td>
+
                     <td><div class="btn-group">
-                            <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_admin&id_admin=<?php echo $kat['id_admin']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
-                            <a href="<?php echo $admin_url; ?>module/admin/aksi_hapus.php?id_admin=<?php echo $kat['id_admin'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
+                            <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_client&id_client=<?php echo $kat['id_client']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                            <a href="<?php echo $admin_url; ?>module/client/aksi_hapus.php?id_client=<?php echo $kat['id_client'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
                         </div>
                     </td>
                   </tr>
@@ -63,7 +70,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                </div><!-- /.box-body -->
 
             <div class="box-footer">
-            <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_admin"><button class="btn btn-primary">Tambah Admin</button></a>
+            <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_client"><button class="btn btn-primary">Tambah Client</button></a>
                  </div><!-- /.box-footer -->
              </div><!-- /.box -->
 
