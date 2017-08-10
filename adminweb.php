@@ -176,13 +176,25 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 include "module/home/index.php";
 
 			} elseif ($_GET['module'] == 'marketing_sales') {
-                include "module/marketing_sales/list_marketing.php";
-            } elseif ($_GET['module'] == 'tambah_marketing') {
-                include "module/marketing_sales/form_tambah.php";
-            } elseif ($_GET['module'] == 'edit_marketingi') {
+                include "module/marketing_sales/list_user.php";
+            } elseif ($_GET['module'] == 'tambah_user') {
+                include "module/marketing_sales/tambah_user.php";
+            } elseif ($_GET['module'] == 'edit_kategori') {
                 include "module/marketing_sales/form_edit.php";
-            } elseif ($_GET['module'] == 'simpan_marketing') {
+            } elseif ($_GET['module'] == 'simpan_user') {
                 include "module/marketing_sales/aksi_simpan.php";
+            } elseif ($_GET['module'] == 'hapus_user') {
+                include "module/marketing_sales/aksi_hapus.php";
+
+            } elseif ($_GET['module'] == 'edit_user') {
+                include "module/marketing_sales/edit_user.php";
+
+            } elseif ($_GET['module'] == 'aksi_edit') {
+                include "module/marketing_sales/aksi_edit.php";
+            } elseif ($_GET['module'] == 'edit_user') {
+               include "module/marketing_sales/edit_user.php";
+
+
 
             } elseif ($_GET['module'] == 'product') {
                 include "module/product/list_produk.php";

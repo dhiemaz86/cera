@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Marketing</small>
+            <small>Pelanggan</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active">Marketing</li>
+            <li class="active">User</li>
           </ol>
         </section>
 
@@ -25,7 +25,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data Marketing</h3>
+                  <h3 class="box-title">Data User</h3>
 
 				  <div class="box-tools">
 
@@ -64,18 +64,18 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 					  <td>
 					   <div class="btn-group">
 
-                          <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_pelanggan&id_pelanggan=<?php echo $mem['id_pelanggan']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
-                          <a href="<?php echo $admin_url; ?>module/pelanggan/aksi_hapus.php?id_pelanggan=<?php echo $mem['id_pelanggan'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
+                          <a href="adminweb.php?module=edit_user&id_user=<?php echo $mem['id_user']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                          <a href="adminweb.php?module=hapus_user&id_user=<?php echo $mem['id_user'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
                         </div>
 					  </td>
                     </tr>
               <?php } ?>
                   </table>
-                </div><!-- /.box-body -->
+                </div><!-- /.box-body-->
 
                 <div class="box-footer">
-                  <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_marketing"><button class="btn btn-primary">Tambah</button></a>
-                  <a href="<?php echo $base_url; ?>adminweb.php?module=print_marketing"><button class="btn btn-primary">Print</button></a>
+                  <a href="adminweb.php?module=tambah_user"><button class="btn btn-primary">Tambah User</button></a>
+                  <a href="<?php echo $base_url; ?>adminweb.php?module=print_member"><button class="btn btn-primary">Print Pelanggan</button></a>
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
 
