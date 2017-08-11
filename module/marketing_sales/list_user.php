@@ -75,7 +75,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 
                 <div class="box-footer">
                   <a href="adminweb.php?module=tambah_user"><button class="btn btn-primary">Tambah User</button></a>
-                  <a href="<?php echo $base_url; ?>adminweb.php?module=print_member"><button class="btn btn-primary">Print Pelanggan</button></a>
+                  <a href="adminweb.php?module=print_user"><button class="btn btn-primary">Print Pelanggan</button></a>
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
 

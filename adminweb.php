@@ -193,6 +193,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 include "module/marketing_sales/aksi_edit.php";
             } elseif ($_GET['module'] == 'edit_user') {
                include "module/marketing_sales/edit_user.php";
+           } elseif ($_GET['module'] == 'print_user') {
+               include "module/marketing_sales/print_user.php";
 
 
 
@@ -268,7 +270,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 				<div class="pull-right hidden-xs">
 					<b>Version</b> 2.3.0
 				</div>
-				<strong>Copyright &copy; 2016 <a href="http://instagram.com/windasdewi">Windasdewi Studio</a>.</strong> All rights reserved.
+				<strong>Copyright &copy; 2017 <a href="ceraproduction.com">Cera Production</a>.</strong> All rights reserved.
 			</footer>
 
 			<!-- Control Sidebar -->
