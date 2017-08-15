@@ -41,30 +41,31 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                <div class="box-body table-responsive no-padding">
                  <table class="table table-hover">
                    <tr>
-                     <th>Nama Kwitansi</th>
-                     <th>Alamat</th>
-                     <th>Email</th>
-                     <th>No HP</th>
+                     <th>No Kwitansi</th>
+                     <th>Nama Client</th>
+                     <th>Tanggal</th>
+                     <th>Sejumlah</th>
+                     <th>Guna Bayar</th>
 
             <th style="width: 110px">Aksi</th>
                    </tr>
                <?php
                include "lib/config.php";
                include "lib/koneksi.php";
-               $kueriKategori= mysqli_query($koneksi,"select * from Kwitansi");
+               $kueriKategori= mysqli_query($koneksi,"select * from cera_sales JOIN cera_sales_item ON cera_sales.sales_id = cera_sales_item.si_sales_id order by sales_kwitansi_no desc");
                while($kat=mysqli_fetch_array($kueriKategori)){
                ?>
                    <tr>
 
-                     <td><?php echo $kat['nama_Kwitansi']; ?></td>
-                     <td><?php echo $kat['alamat']; ?></td>
-                     <td><?php echo $kat['email']; ?></td>
-                     <td><?php echo $kat['no_hp']; ?></td>
+                     <td><?php echo $kat['sales_kwitansi_no']; ?></td>
+                     <td><?php echo $kat['client_name']; ?></td>
+                     <td><?php echo $kat['sales_tgl_bayar']; ?></td>
+                     <td><?php echo $kat['si_item_name']; ?></td>
 
            <td>
             <div class="btn-group">
 
-                         <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_Kwitansi&id_Kwitansi=<?php echo $kat['id_Kwitansi']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                         <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_kwitansi&id_kwitansi=<?php echo $kat['id_Kwitansi']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
                          <a href="<?php echo $admin_url; ?>module/Kwitansi/aksi_hapus.php?id_Kwitansi=<?php echo $kat['id_Kwitansi'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
                        </div>
            </td>
@@ -74,8 +75,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                </div><!-- /.box-body -->
 
             <div class="box-footer">
-       <a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_Kwitansi"><button class="btn btn-primary">Tambah Kwitansi</button></a>
-       <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_Kwitansi"><button class="btn btn-primary">Print Kwitansi</button></a>
+       <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_kwitansi"><button class="btn btn-primary">Tambah Kwitansi</button></a>
+       <a href="<?php echo $base_url; ?>adminweb.php?module=print_kwitansi"><button class="btn btn-primary">Print Kwitansi</button></a>
                  </div><!-- /.box-footer -->
              </div><!-- /.box -->
 

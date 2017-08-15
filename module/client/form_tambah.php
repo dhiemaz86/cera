@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Admin</small>
+            <small>Client</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Tambah Admin</li>
+            <li class="active">Tambah Client</li>
           </ol>
         </section>
 

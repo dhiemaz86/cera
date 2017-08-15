@@ -188,7 +188,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 
             } elseif ($_GET['module'] == 'edit_user') {
                 include "module/marketing_sales/edit_user.php";
-
             } elseif ($_GET['module'] == 'aksi_edit') {
                 include "module/marketing_sales/aksi_edit.php";
             } elseif ($_GET['module'] == 'edit_user') {
@@ -197,24 +196,25 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                include "module/marketing_sales/print_user.php";
 
 
-
             } elseif ($_GET['module'] == 'product') {
                 include "module/product/list_produk.php";
             } elseif ($_GET['module'] == 'tambah_produk') {
                 include "module/product/form_tambah.php";
             } elseif ($_GET['module'] == 'edit_produk') {
                 include "module/product/form_edit.php";
+            } elseif ($_GET['module'] == 'child_home') {
+                include "module/product/home_child.php";
             } elseif ($_GET['module'] == 'print_produk') {
                 include "module/product/print_produk.php";
 
             } elseif ($_GET['module'] == 'quotation') {
                 include "module/quotation/list_quotation.php";
-            } elseif ($_GET['module'] == 'tambah_pesan') {
+            } elseif ($_GET['module'] == 'tambah_quotation') {
                 include "module/quotation/form_tambah.php";
             } elseif ($_GET['module'] == 'edit_quotationn') {
                 include "module/quotation/form_edit.php";
             }elseif ($_GET['module'] == 'print_quotation') {
-                include "module/quotation/print_pesan.php";
+                include "module/quotation/print_quotation.php";
 
             } elseif ($_GET['module'] == 'purchase_order') {
                 include "module/purchase_order/list_po.php";
@@ -303,6 +303,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 		<!-- AdminLTE for demo purposes -->
 		<script src="asset/dist/js/demo.js"></script>
 
+		<script type="text/javascript">
+			
+			function editPrice(a,b,c) {
+				console.log({ a,b,c });
+			}
+
+		</script>
 	      <script type="text/javascript" src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 	      <script type="text/javascript">
 	      

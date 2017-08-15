@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Supplier</small>
+            <small>Kwitansi</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Tambah Supplier</li>
+            <li class="active">Tambah Kwitansi</li>
           </ol>
         </section>
 
@@ -25,35 +25,42 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Form Tambah Supplier</h3>
+                  <h3 class="box-title">Form Tambah Kwitansi</h3>
               </div>
-			        <form class="form-horizontal" action="../admin/module/supplier/aksi_simpan.php" method="post">
+			        <form class="form-horizontal" action="module/Kwitansi/aksi_simpan.php" method="post">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Supplier</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Kwitansi No</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="namaSupplier" name="nama_supplier" placeholder="Nama Supplier">
+                        <input type="text" class="form-control" id="kwitansiNo" name="kwitansiNo" placeholder="Nomor Kwitansi">
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Alamat</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Sudah diterima dari</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat">
+                        <input type="text" class="form-control" id="namaClient" name="nama_client" placeholder="Nama Client">
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Sejumlah</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                        <input type="text" class="form-control" id="totalHarga" name="totalHarga" placeholder="Total Harga">
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">No HP</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Terbilang</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="No HP">
+                        <input type="text" class="form-control" id="terbilang" name="terbilang" placeholder="Terbilang">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Untuk Pembayaran</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="gunaBayar" name="gunaBayar" placeholder="Untuk Pembayaran">
                       </div>
                     </div>
 

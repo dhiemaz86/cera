@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Invoice</small>
+            <small>Quotation</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Tambah Invoice</li>
+            <li class="active">Tambah Quotation</li>
           </ol>
         </section>
 
@@ -25,14 +25,14 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Form Tambah Invoice</h3>
+                  <h3 class="box-title">Form Tambah Quotation</h3>
               </div>
-              <form class="form-horizontal" action="module/client/aksi_simpan.php" method="post">
+			        <form class="form-horizontal" action="module/client/aksi_simpan.php" method="post">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Invoice No</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Quotation No</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="invoiceNo" name="invoiceNo" placeholder="Nomor Invoice">
+                        <input type="text" class="form-control" id="quotationNo" name="quotationNo" placeholder="Nomor Quotation">
                       </div>
                     </div>
 
@@ -201,7 +201,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                     <button type="submit" class="btn btn-primary pull-right">Simpan</button>
                   </div><!-- /.box-footer -->
                 </form>
-      </div>
+			</div>
             </div>
           </div>
         </section><!-- /.content -->

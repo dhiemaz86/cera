@@ -24,7 +24,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data Products</h3>
+                  <h3 class="box-title">Data Products (Parent)</h3>
 				  <div class="box-tools">
                     <div class="input-group" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -34,48 +34,131 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                     </div>
                   </div>
                 </div><!-- /.box-header -->
+                
                 <div class="box-body table-responsive no-padding">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#new" aria-expanded="false" aria-controls="collapseExample">
+                  New Product
+                </button>
+                <!--mulai collapse-->
+                <div class="collapse" id="new">
+                  <div class="well">
+
+                      <form class="form-horizontal" action="module/product/aksi_simpan.php" method="post" enctype="multipart/form-data">
+                          <div class="box-body">
+                              
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Kode Produk</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="kodeProduk" name="kodeProduk" placeholder="Kode Produk">
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Kategori</label>
+                              <div class="col-sm-10">
+                              <select class="form-control" name="idKategori">
+                              
+                                <?php
+                                  include "lib/koneksi.php";
+                                  $kueriKategori= mysqli_query($koneksi, "select * from cera_product_category");
+                                  while($kat=mysqli_fetch_array($kueriKategori)){
+                                ?>
+                                    <option value="<?php echo $kat['pc_id']; ?>"><?php echo $kat['pc_name']; ?></option>
+                                <?php } ?>
+                              
+                              </select>
+                            </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Nama Produk</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="namaProduk" name="namaProduk" placeholder="Nama Produk">
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Harga</label>
+                              <div class="col-sm-10">
+                                <input type="number" class="form-control" id="hargaProduk" name="hargaProduk" placeholder="Harga">
+                              </div>
+                            </div>
+
+                             <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Deskripsi Produk</label>
+                              <div class="col-sm-10">
+                                <textarea class="form-control" id="deskripsiProduk" name="deskripsiProduk" placeholder="Deskripsi Produk"></textarea>
+                              </div>
+                            </div>
+
+                              <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Gambar</label>
+                              <div class="col-sm-10">
+                              <input type="file" id="gambar" name="gambar">
+                              </div>
+                            </div>
+
+                             
+                          </div><!-- /.box-body -->
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-primary pull-right">Simpan</button>
+                          </div><!-- /.box-footer -->
+                        </form>
+                      </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <!-- selesai collapse-->
+                
                   <table class="table table-hover">
                     <tr>
+                      <th>No</th>
                       <th>Nama Produk</th>
-                      <th>Kategori</th>
-                      <th>Kode Produk</th>
-                      <th>Berat</th>
-                      <th>Status</th>
-                      <th>Gambar</th>
-                      <th>Deskripsi</th>
-					            <th style="width: 110px">Aksi</th>
+                      <th>Total Product Child</th>
+                      <th>Options</th>
                     </tr>
       					<?php
-      					include "lib/config.php";
-      					include "lib/koneksi.php";
-      					$kueriProduk= mysqli_query($koneksi,"SELECT * FROM cera_product_category JOIN cera_product ON cera_product.product_pc_id = cera_product_category.pc_id JOIN cera_product_price ON cera_product.id_product = cera_product_price.pp_product_id");
-      					while($pro=mysqli_fetch_array($kueriProduk)){
+                include "lib/koneksi.php";
+      					$i = 1;
+                      $products = "select * from cera_product where product_status = 'active' and product_type = 'parent' ";
+                      $products = mysqli_query($koneksi,$products);
+
+                      while($data=mysqli_fetch_array($products)) {
+                        
+                        $childs = "select * from cera_product where product_parent_id".$data['id_product'];
+                        $childs = mysqli_query($koneksi,$childs);
+
       					?>
                     <tr>
 
-                      <td><?php echo $pro['product_name']; ?></td>
-                      <td><?php echo $pro['pc_name']; ?></td>
-                      <td><?php echo $pro['product_code']; ?></td>
-                      <td><?php echo $pro['product_size']; ?></td>
-                      <td><?php echo $pro['product_status']; ?></td>
-
-                     
-					            <td><img src="upload/<?php echo $pro['product_img'];?>" height="100" width="150"></td>
-                       <td><?php echo $pro['product_desc']; ?></td>
-					            <td>
-					                <div class="btn-group">
-                          <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_produk&id_Products=<?php echo $pro['id_Products']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
-                          <a href="<?php echo $admin_url; ?>module/Products/aksi_hapus.php?id_Products=<?php echo $pro['id_Products'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
-                      </div></td>
+                      <td><?php echo $i; ?></td>
+                        <td><?php echo $data['product_name']; ?></td>
+                        <td><?php echo @count(mysqli_fetch_array($childs)); ?> </td>
+                        <td>
+                        <div class="dropdown">
+                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Options
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="dLabel" aria-labelledby="drop6"> 
+                              <li><a href="<?php echo $admin_url; ?>adminweb.php?module=child_home&id=<?php echo $data['id_product']; ?>">Child Management</a></li> 
+                              <li><a href="#">Edit</a></li> 
+                              <li role="separator" class="divider"></li> 
+                              <li><a href="#">Delete</a></li> 
+                            </ul>
+                          </div>
+                        </td>
+					            
                     </tr>
               <?php } ?>
                   </table>
                 </div><!-- /.box-body -->
 
 				     <div class="box-footer">
-				      <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_produk"><button class="btn btn-primary">Tambah Produk</button></a>
-              <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_produk"><button class="btn btn-primary">Print</button></a>
+
+				      
 
                   </div><!-- /.box-footer -->
               </div><!-- /.box -->

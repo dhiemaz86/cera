@@ -41,18 +41,19 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
-                      <th>Nama Invoice</th>
-                      <th>Username</th>
-                      <th>Password</th>
-                      <th>Email</th>
+                      <th>Invoice No</th>
+                      <th>Nama Client</th>
                       <th>Alamat</th>
+                      <th>Email</th>
                       <th>No HP</th>
+                      <th>Tanggal</th>
+                      <th>Status</th>
 					            <th style="width: 110px">Aksi</th>
                     </tr>
       					<?php
       					include "lib/config.php";
       					include "lib/koneksi.php";
-      					$kueriInvoice= mysqli_query($koneksi,"select * from Invoice order by id_Invoice desc");
+      					$kueriInvoice= mysqli_query($koneksi,"select * from cera_sales JOIN cera_sales_item ON cera_sales.sales_id = cera_sales_item.si_sales_id order by sales_invoice_no desc");
       					while($mem=mysqli_fetch_array($kueriInvoice)){
       					?>
                     <tr>
@@ -63,6 +64,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                       <td><?php echo $mem['email']; ?></td>
                       <td><?php echo $mem['alamat']; ?></td>
                       <td><?php echo $mem['no_hp']; ?></td>
+                      <td><?php echo $mem['no_hp']; ?></td>
+
 					  <td>
 					   <div class="btn-group">
 
@@ -76,8 +79,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div><!-- /.box-body -->
 
                 <div class="box-footer">
-                  <a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_Invoice"><button class="btn btn-primary">Tambah Invoice</button></a>
-                  <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_member"><button class="btn btn-primary">Print Invoice</button></a>
+                  <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_invoice"><button class="btn btn-primary">Tambah Invoice</button></a>
+                  <a href="<?php echo $base_url; ?>adminweb.php?module=print_invoice"><button class="btn btn-primary">Print Invoice</button></a>
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
 
