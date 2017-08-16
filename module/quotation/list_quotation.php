@@ -94,8 +94,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div><!-- /.box-body -->
 
 				     <div class="box-footer">
-             <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_quotation"><button class="btn btn-primary">Tambah Quotation</button></a>
-              <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_quotation"><button class="btn btn-primary">Print</button></a>
+             <a href="adminweb.php?module=tambah_quotation"><button class="btn btn-primary">Tambah Quotation</button></a>
+              <a href="adminweb.php?module=print_quotation"><button class="btn btn-primary">Print</button></a>
                   </div><!-- /.box-footer -->
               </div><!-- /.box -->
 
