@@ -140,6 +140,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 						<li>
 							<a href="adminweb.php?module=marketing_sales"> <i class="fa fa-bars"></i> <span>Marketing Sales</span> </a>
 						</li>
+
+						<li>
+							<a href="adminweb.php?module=category"> <i class="fa fa-th"></i> <span>Category</span> </a>
+						</li>
+
 						<li>
 							<a href="adminweb.php?module=product"> <i class="fa fa-th"></i> <span>Products</span> </a>
 						</li>
@@ -194,6 +199,24 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                include "module/marketing_sales/edit_user.php";
            } elseif ($_GET['module'] == 'print_user') {
                include "module/marketing_sales/print_user.php";
+
+
+			} elseif ($_GET['module'] == 'category') {
+                include "module/kategori/list_kategori.php";
+            } elseif ($_GET['module'] == 'tambah_category') {
+                include "module/kategori/form_tambah.php";
+            } elseif ($_GET['module'] == 'edit_category') {
+                include "module/kategori/form_edit.php";
+            } elseif ($_GET['module'] == 'aksiedit_category') {
+                include "module/kategori/aksi_edit.php";
+            } elseif ($_GET['module'] == 'hapus_category') {
+                include "module/kategori/aksi_hapus.php";
+           } elseif ($_GET['module'] == 'simpan_category') {
+                include "module/kategori/aksi_simpan.php";
+            } elseif ($_GET['module'] == 'print_category') {
+                include "module/kategori/print_category.php";
+
+
 
 
             } elseif ($_GET['module'] == 'product') {
