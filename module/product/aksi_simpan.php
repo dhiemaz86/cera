@@ -65,22 +65,22 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 
                 if ($querySimpan) {// Cek jika proses simpan ke database sukses atau tidak
                     // Jika Sukses, Lakukan :
-                    echo "<script> alert('Data Produk Berhasil Masuk'); window.location = '$admin_url'+'adminweb.php?module=product';</script>";
+                    echo "<script> alert('Data Produk Berhasil Masuk'); window.location = 'adminweb.php?module=product';</script>";
                 } else {
                     // Jika Gagal, Lakukan :
-                    echo "<script> alert('Data Produk Berhasil Masuk'); window.location = '$admin_url'+'adminweb.php?module=product';</script>";
+                    echo "<script> alert('Data Produk Berhasil Masuk'); window.location = 'adminweb.php?module=product';</script>";
                 }
             } else {
                 // Jika gambar gagal diupload, Lakukan :
-                echo "<script> alert('Data Gambar Produk Gagal Dimasukkan'); window.location = '$admin_url'+'adminweb.php?module=product';</script>";
+                echo "<script> alert('Data Gambar Produk Gagal Dimasukkan'); window.location ='adminweb.php?module=product';</script>";
             }
         } else {
             // Jika ukuran file lebih dari 1MB, lakukan :
-            echo "<script> alert('Data Gambar Produk Gagagl Dimasukkan Karena Ukuran Melebihi 1 MB'); window.location = '$admin_url'+'adminweb.php?module=product';</script>";
+            echo "<script> alert('Data Gambar Produk Gagagl Dimasukkan Karena Ukuran Melebihi 1 MB'); window.location = 'adminweb.php?module=product';</script>";
         }
     } else {
         // Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
-        echo "<script> alert('Data Gambar Produk Gagal Dimasukkan Karena Tidak Berekstensi JPG/JPEG/PNG'); window.location = '$admin_url'+'adminweb.php?module=product';</script>";
+        echo "<script> alert('Data Gambar Produk Gagal Dimasukkan Karena Tidak Berekstensi JPG/JPEG/PNG'); window.location = 'adminweb.php?module=product';</script>";
     }
 }
 ?>
