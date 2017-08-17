@@ -12,6 +12,8 @@
   popupWin.document.write(toPrint.outerHTML);
   popupWin.document.write('</html>');
   popupWin.document.close();
+  
+ window.location = 'adminweb.php?module=quotation';
  }
   function PrintPreview() {
   var toPrint = document.getElementById('print');
