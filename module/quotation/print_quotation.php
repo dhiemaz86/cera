@@ -2,15 +2,36 @@
 <html>
 <head>
   <title>Laporan Data User</title>
-  <script type="text/javascript">
-var s5_taf_parent = window.location;
-function popup_print(){
-window.open('preview.php','page','toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=750,height=600,left=50,top=50,titlebar=no')
-}
+<script type="text/javascript">
+ /*--This JavaScript method for Print command--*/
+  function PrintDoc() {
+  var toPrint = document.getElementById('print');
+  var popupWin = window.open('');
+  popupWin.document.open();
+  popupWin.document.write('<html><title>::Print Data::</title><link rel="stylesheet" type="text/css" href="print.css" /></head><body onload="window.print()">')
+  popupWin.document.write(toPrint.outerHTML);
+  popupWin.document.write('</html>');
+  popupWin.document.close();
+ }
+  function PrintPreview() {
+  var toPrint = document.getElementById('print');
+  var popupWin = window.open('');
+  popupWin.document.open();
+  popupWin.document.write('<html><title>::Printpreview Data::</title><link rel="stylesheet" type="text/css" href="print.css" media="screen"/></head><body">')
+  popupWin.document.write(toPrint.outerHTML);
+  popupWin.document.write('</html>');
+  popupWin.document.close();
+ }
 </script>
 
+
+</head>
+
+<body  onLoad="PrintDoc()">
+
+<div id="print">
 <table border="0" width="100%">
-    <tr>
+<tr>
 
 <td width="10%"></td>
 <td width="40%">
@@ -28,8 +49,6 @@ print"<img src=\"$image\" width=\"50%\" height=\"80%\"\/> <br>";
 
 </td>
 <td width="10%">
-</head>
-<body onLoad="window.print()">
 </td>
 <td width="40%">
   <?php 
@@ -65,5 +84,12 @@ echo"<tr>
 </tr>";
 
 } ?>
+
+
+
+
+
+</table>
+</div>
 </body>
 </html>
