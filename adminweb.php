@@ -264,7 +264,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             } elseif ($_GET['module'] == 'edit_admin') {
                include "module/kwitansi/form_edit.php";
             } elseif ($_GET['module'] == 'print_kwitansi') {
-                include "module/invoice/print_kwitansi.php";
+                include "module/kwitansi/print_kwitansi.php";
 
             } elseif ($_GET['module'] == 'client') {
                 include "module/client/list_client.php";
