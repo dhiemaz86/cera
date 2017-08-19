@@ -69,8 +69,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 					  <td>
 					   <div class="btn-group">
 
-                          <a href="<?php echo $admin_url; ?>adminweb.php?module=edit_Invoice&id_Invoice=<?php echo $mem['id_Invoice']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
-                          <a href="<?php echo $admin_url; ?>module/Invoice/aksi_hapus.php?id_Invoice=<?php echo $mem['id_Invoice'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
+                          <a href="adminweb.php?module=edit_Invoice&id_Invoice=<?php echo $mem['id_Invoice']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                          <a href="module/Invoice/aksi_hapus.php?id_Invoice=<?php echo $mem['id_Invoice'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
                         </div>
 					  </td>
                     </tr>
@@ -79,8 +79,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 </div><!-- /.box-body -->
 
                 <div class="box-footer">
-                  <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_invoice"><button class="btn btn-primary">Tambah Invoice</button></a>
-                  <a href="<?php echo $base_url; ?>adminweb.php?module=print_invoice"><button class="btn btn-primary">Print Invoice</button></a>
+                  <a href="adminweb.php?module=tambah_invoice"><button class="btn btn-primary">Tambah Invoice</button></a>
+                  <a href="adminweb.php?module=print_invoice"><button class="btn btn-primary">Print Invoice</button></a>
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
 
