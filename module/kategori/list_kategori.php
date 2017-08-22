@@ -1,8 +1,8 @@
  <?php
-
+ // session_start();
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
     echo "<center>Untuk mengakses modul, Anda harus login <br>";
-    echo "<a href=../../index.php><b>LOGIN</b></a></center>";
+    echo "<a href=index.php><b>LOGIN</b></a></center>";
 } else { ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -10,11 +10,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         <section class="content-header">
           <h1>
             Manajemen
-            <small>Pelanggan</small>
+            <small>Kategori</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-            <li class="active">User</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Kategori</li>
           </ol>
         </section>
 
@@ -25,7 +25,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Data User</h3>
+                  <h3 class="box-title">Data Kategori</h3>
 
 				  <div class="box-tools">
 
@@ -41,42 +41,33 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
-                      <th>No</th>
-                      <th>Nama Sales</th>                  
-                      <th>Email</th>
-                      <th>Jabatan</th>
-                      <th>No HP</th>
-					            <th style="width: 110px">Aksi</th>
+                      <th>Kategori</th>
+					   <th style="width: 110px">Aksi</th>
                     </tr>
       					<?php
       					include "lib/config.php";
       					include "lib/koneksi.php";
-      					$kueriUser= mysqli_query($koneksi,"select * from cera_user order by id_user asc");
-      					while($mem=mysqli_fetch_array($kueriUser)){
+      					$kueriKategori= mysqli_query($koneksi,"select * from cera_product_category");
+      					while($kat=mysqli_fetch_array($kueriKategori)){
       					?>
                     <tr>
 
-                      <td><?php echo $mem['id_user']; ?></td>
-                      <td><?php echo $mem['nama_user']; ?></td>
-                      <td><?php echo $mem['email_user']; ?></td>
-                      <td><?php echo $mem['position_user']; ?></td>
-                      <td><?php echo $mem['phone_user']; ?></td>
+                      <td><?php echo $kat['pc_name']; ?></td>
 					  <td>
 					   <div class="btn-group">
 
-                          <a href="adminweb.php?module=edit_user&id_user=<?php echo $mem['id_user']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
-                          <a href="adminweb.php?module=hapus_user&id_user=<?php echo $mem['id_user'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
+                          <a href="adminweb.php?module=edit_category&id_kategori=<?php echo $kat['pc_id']; ?>" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                          <a href="adminweb.php?module=hapus_category&id_kategori=<?php echo $kat['pc_id'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class='fa fa-power-off'></i></button></a>
                         </div>
 					  </td>
                     </tr>
               <?php } ?>
                   </table>
-                </div><!-- /.box-body-->
+                </div><!-- /.box-body -->
 
-                <div class="box-footer">
-                  <a href="adminweb.php?module=tambah_user"><button class="btn btn-primary">Tambah User</button></a>
-                  <a href="adminweb.php?module=print_user"><button class="btn btn-primary">Print User</button></a>
-                </div><!-- /.box-footer -->
+				     <div class="box-footer">
+				<a href="adminweb.php?module=tambah_category"><button class="btn btn-primary">Tambah Kategori</button></a>
+                  </div><!-- /.box-footer -->
               </div><!-- /.box -->
 
             </div>

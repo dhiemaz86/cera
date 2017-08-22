@@ -2,7 +2,7 @@
  //session_start();
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
     echo "<center>Untuk mengakses modul, Anda harus login <br>";
-    echo "<a href=../../index.php><b>LOGIN</b></a></center>";
+    echo "<a href=index.php><b>LOGIN</b></a></center>";
 } else { ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -136,8 +136,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                               <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" id="dLabel" aria-labelledby="drop6"> 
+<<<<<<< HEAD
                               <li><a href="<?php echo $admin_url; ?>adminweb.php?module=child_home&id=<?php echo $data['id_product']; ?>">Child Management</a></li> 
                               <li><a href="javascript::void(0)" data-toggle="modal" data-target="#editParent<?php echo $data['id_product']; ?>">Edit</a></li> 
+=======
+                              <li><a href="adminweb.php?module=child_home&id=<?php echo $data['id_product']; ?>">Child Management</a></li> 
+                              <li><a href="#">Edit</a></li> 
+>>>>>>> 55e4c7fa8107a2720ef6b4b761689af09fbfdcae
                               <li role="separator" class="divider"></li> 
                               <li><a href="<?php echo $admin_url; ?>module/product/aksi_hapus.php?id_product=<?php echo $data['id_product'];?>">Delete</a></li> 
                             </ul>
