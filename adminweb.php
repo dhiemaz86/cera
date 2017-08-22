@@ -151,18 +151,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 						<li>
 							<a href="adminweb.php?module=sales"> <i class="fa fa-shopping-cart"></i> <span>Sales</span> </a>
 						</li>
-						<li>
-							<a href="adminweb.php?module=quotation"> <i class="fa fa-money"></i> <span>Quotation</span> </a>
-						</li>
-						<li>
-							<a href="adminweb.php?module=purchase_order"> <i class="fa fa-bar-chart"></i> <span>Purchase Order</span> </a>
-						</li>
-            			<li>
-            				<a href="adminweb.php?module=invoice"> <i class="fa fa-bar-chart"></i> <span>Invoice</span> </a>
-          				</li>
-						<li>
-							<a href="adminweb.php?module=kwitansi"> <i class="fa fa-users"></i> <span>Kwitansi</span> </a>
-						</li>
+						
            				 <li>
             				<a href="adminweb.php?module=client"> <i class="fa fa-users"></i> <span>Client</span> </a>
          	 			</li>
