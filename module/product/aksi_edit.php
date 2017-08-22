@@ -6,37 +6,35 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
     echo "<a href=../../index.php><b>LOGIN</b></a></center>";
 } else {
 
-    include "../../../lib/config.php";
-    include "../../../lib/koneksi.php";
+    include "../../lib/config.php";
+    include "../../lib/koneksi.php";
 
-    $idKopi 	= $_POST['id_kopi'];
+    $idProduk 	= $_POST['id_product'];
 
-
-    $namaKopi = $_POST['nama_kopi'];
-    $proses = $_POST['proses'];
-    $berat = $_POST['berat'];
-    $stok = $_POST['stok'];
-    $deskripsi = $_POST['deskripsi'];
-	$harga = $_POST['harga'];
-	$nama_file = $_FILES['gambar']['name'];
-    $ukuran_file= $_FILES['gambar']['size'];
-    $tipe_file 	= $_FILES['gambar']['type'];
-    $tmp_file 	= $_FILES['gambar']['tmp_name'];
+    $nama_file = $_FILES['gambar']['name'];
+    $ukuran_file = $_FILES['gambar']['size'];
+    $tipe_file = $_FILES['gambar']['type'];
+    $tmp_file = $_FILES['gambar']['tmp_name'];
+    /// data selain gambar
+    $idKategori = $_POST['idKategori'];
+    $namaProduk = $_POST['namaProduk'];
+    $kodeProduk = $_POST['kodeProduk'];
+    $deskripsiProduk = $_POST['deskripsiProduk'];
 
 	$path = "../../upload/" . $nama_file;
 
 	if($nama_file==""){
-	$querySimpan = mysqli_query($koneksi,"UPDATE kopi SET nama_kopi='$namaKopi',proses='$proses',berat='$berat',stok='$stok',deskripsi='$deskripsi',harga='$harga' WHERE id_kopi='$idKopi'");
+	$querySimpan = mysqli_query($koneksi,"UPDATE cera_product SET product_name='$namaProduk',product_code='$kodeProduk',product_desc='$deskripsiProduk' WHERE id_product='$idProduk'");
 	} else {
 		   move_uploaded_file($tmp_file, $path);// Cek apakah gambar berhasil diupload atau tidak
                 // Jika gambar berhasil diupload, Lakukan :
                 // Proses simpan ke Database
-          $querySimpan = mysqli_query($koneksi,"UPDATE kopi SET nama_kopi='$namaKopi', stok='$stok', gambar='$nama_file', deskripsi='$deskripsi', harga='$harga' WHERE id_kopi='$idKopi'");
+          $querySimpan = mysqli_query($koneksi,"UPDATE cera_product SET product_name='$namaProduk',product_code='$kodeProduk',product_desc='$deskripsiProduk', product_img='$nama_file' WHERE id_product='$idProduk'");
 			}
 				if($querySimpan){
-					echo "<script> alert('Data Berhasil Masuk'); window.location = '$admin_url'+'adminweb.php?module=kopi';</script>";
+					echo "<script> alert('Data Berhasil Masuk'); window.location = '$admin_url'+'adminweb.php?module=product';</script>";
 				} else {
-					echo "<script> alert('Data Berhasil Masuk'); window.location = '$admin_url'+'adminweb.php?module=edit_produk&id_kopi=$idKopi';</script>";
+					echo "<script> alert('Data Berhasil Masuk'); window.location = '$admin_url'+'adminweb.php?module=edit_produk&id_product=$idProduk';</script>";
 				}
 }
 

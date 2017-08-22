@@ -138,10 +138,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 						</li>
 					
 						<li>
-							<a href="adminweb.php?module=marketing_sales"> <i class="fa fa-bars"></i> <span>Marketing Sales</span> </a>
+							<a href="adminweb.php?module=marketing_sales"> <i class="fa fa-male"></i> <span>Marketing Sales</span> </a>
 						</li>
 						<li>
 							<a href="adminweb.php?module=product"> <i class="fa fa-th"></i> <span>Products</span> </a>
+						</li>
+						<li>
+							<a href="adminweb.php?module=sales"> <i class="fa fa-shopping-cart"></i> <span>Sales</span> </a>
 						</li>
 						<li>
 							<a href="adminweb.php?module=quotation"> <i class="fa fa-money"></i> <span>Quotation</span> </a>
@@ -172,6 +175,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 				<!-- /.sidebar -->
 			</aside>
 			<?php
+
             if ($_GET['module'] == 'home') {
                 include "module/home/index.php";
 
@@ -259,6 +263,15 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             } elseif ($_GET['module'] == 'edit_rekap') {
                 include "module/rekap_order/form_edit.php";
             } elseif ($_GET['module'] == 'print_rekap') {
+                include "module/rekap_order/print_rekap.php";         
+
+			} elseif ($_GET['module'] == 'sales') {
+                include "module/sales/sales.php";
+            } elseif ($_GET['module'] == 'tambah_rekap') {
+                include "module/rekap_order/form_tambah.php";
+            } elseif ($_GET['module'] == 'edit_rekap') {
+                include "module/rekap_order/form_edit.php";
+            } elseif ($_GET['module'] == 'print_rekap') {
                 include "module/rekap_order/print_rekap.php";
             }
 
@@ -266,6 +279,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
             	 include "module/home/index.php";
             }
 			?>
+
 			<footer class="main-footer">
 				<div class="pull-right hidden-xs">
 					<b>Version</b> 2.3.0
@@ -310,6 +324,27 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 			}
 
 		</script>
+
+		<script type="text/javascript">
+
+		  $('#newquotation').modal({
+		  	backdrop:'static',
+		    keyboard: false
+		  });
+		  $('#newquotation').modal('hide')
+		  <?php
+		    if(isset($_SESSION['formData'])){
+		    	if(array_key_exists('quotationNo', $_SESSION['formData']) || (trim($_SESSION['formData']['quotationNo']) !== '') ){
+		      ?>
+		      
+		      	$('#newquotation').modal('show');
+
+		      <?php
+		  		}
+		    }
+		  ?>
+		</script>
+
 	      <script type="text/javascript" src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 	      <script type="text/javascript">
 	      

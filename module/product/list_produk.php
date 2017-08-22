@@ -77,13 +77,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                               </div>
                             </div>
 
-                            <div class="form-group">
-                              <label for="inputEmail3" class="col-sm-2 control-label">Harga</label>
-                              <div class="col-sm-10">
-                                <input type="number" class="form-control" id="hargaProduk" name="hargaProduk" placeholder="Harga">
-                              </div>
-                            </div>
-
                              <div class="form-group">
                               <label for="inputEmail3" class="col-sm-2 control-label">Deskripsi Produk</label>
                               <div class="col-sm-10">
@@ -144,15 +137,17 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                             </button>
                             <ul class="dropdown-menu" id="dLabel" aria-labelledby="drop6"> 
                               <li><a href="<?php echo $admin_url; ?>adminweb.php?module=child_home&id=<?php echo $data['id_product']; ?>">Child Management</a></li> 
-                              <li><a href="#">Edit</a></li> 
+                              <li><a href="javascript::void(0)" data-toggle="modal" data-target="#editParent<?php echo $data['id_product']; ?>">Edit</a></li> 
                               <li role="separator" class="divider"></li> 
-                              <li><a href="#">Delete</a></li> 
+                              <li><a href="<?php echo $admin_url; ?>module/product/aksi_hapus.php?id_product=<?php echo $data['id_product'];?>">Delete</a></li> 
                             </ul>
                           </div>
                         </td>
 					            
                     </tr>
-              <?php } ?>
+                    <?php
+                    $i++;
+               } ?>
                   </table>
                 </div><!-- /.box-body -->
 
@@ -168,3 +163,92 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <?php } ?>
+
+<!-- Modal -->
+        <div class="modal fade" id="editParent<?php echo $data['id_product'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content modal-lg">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit in Product Parent <?php echo $data['product_name'];?></h4>
+              </div>
+
+              <div class="modal-body">
+              <?php
+                include "lib/koneksi.php";
+                      $products = "select * from cera_product where product_status = 'active' and product_type = 'parent' ";
+                      $products = mysqli_query($koneksi,$products);
+
+                      while($data=mysqli_fetch_array($products)) {
+                        
+                        $childs = "select * from cera_product where product_parent_id".$data['id_product'];
+                        $childs = mysqli_query($koneksi,$childs);
+
+                ?>
+
+                      <form class="form-horizontal" action="module/product/aksi_edit.php" method="post" enctype="multipart/form-data">
+                          <div class="box-body">
+                              
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Kode Produk</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="kodeProduk" name="kodeProduk" placeholder="Kode Produk" value="<?php echo $data['product_code']?>">
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Kategori</label>
+                              <div class="col-sm-10">
+                              <select class="form-control" name="idKategori">
+                              
+                                <?php
+                                  include "lib/koneksi.php";
+                                  $kueriKategori= mysqli_query($koneksi, "select * from cera_product_category");
+                                  while($kat=mysqli_fetch_array($kueriKategori)){
+                                ?>
+                                    <option value="<?php echo $kat['pc_id']; ?>"><?php echo $kat['pc_name']; ?></option>
+                                <?php } ?>
+                              
+                              </select>
+                            </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Nama Produk</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="namaProduk" name="namaProduk" placeholder="Nama Produk" value="<?php echo $data['product_name']?>">
+                              </div>
+                            </div>
+
+                             <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Deskripsi Produk</label>
+                              <div class="col-sm-10">
+                                <textarea class="form-control" id="deskripsiProduk" name="deskripsiProduk" placeholder="Deskripsi Produk"></textarea>
+                              </div>
+                            </div>
+
+                              <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-2 control-label">Gambar</label>
+                              <div class="col-sm-10">
+                              <input type="file" id="gambar" name="gambar">
+                              </div>
+                            </div>
+
+                             
+                          </div><!-- /.box-body -->
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-primary pull-right">Simpan</button>
+                          </div><!-- /.box-footer -->
+                        </form>
+
+                    </div>
+                  </div>
+
+              </div>
+
+            </div>
+
+      <?php
+        }
+      ?>
