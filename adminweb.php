@@ -1,10 +1,23 @@
 <?php
-include "lib/config.php";
+include "lib/config.php";     			
+include "lib/koneksi.php";
+ob_start();
 session_start();
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
     echo "<center>Untuk mengakses modul, Anda harus login <br>";
     echo "<a href=$admin_url><b>LOGIN</b></a></center>";
-} else { ?>
+} else { 
+	$user = $_SESSION['username'];
+    $sqlUser = "select * from cera_user where nama_user='".$_SESSION['username']."'";
+
+ 	$kuerisqluser= mysqli_query($koneksi,"select * from cera_user where nama_user='".$_SESSION['username']."'");
+ 
+ 	$user = $_SESSION['username'];
+
+ 	  
+
+
+	?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -60,7 +73,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 							</li>
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="asset/dist/img/winda.jpg" class="user-image" alt="User Image"> <span class="hidden-xs">Winda Sekar</span> </a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="asset/dist/img/winda.jpg" class="user-image" alt="User Image"> <span class="hidden-xs"><?php 	  echo "<text class='text-uppercase'> $user </text>"; ?></span> </a>
 								<ul class="dropdown-menu">
 									<!-- User image -->
 									<li class="user-header">
@@ -111,7 +124,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 						</div>
 						<div class="pull-left info">
 							<p>
-								Winda Sekar
+								<?php 	  echo "<text class='text-uppercase'> $user </text>"; ?>
 							</p>
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
