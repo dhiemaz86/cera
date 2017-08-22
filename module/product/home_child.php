@@ -149,7 +149,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                               <li><a href="#" data-toggle="modal" data-target="#price<?php echo $child['id_product']; ?>">Price Management</a></li> 
                               <li><a href="#">Edit</a></li> 
                               <li role="separator" class="divider"></li> 
-                              <li><a href="#">Delete</a></li> 
+                              <li><a href="<?php echo $admin_url; ?>module/product/aksi_hapus.php?id_product=<?php echo $child['id_product'];?>">Delete</a></li> 
                             </ul>
 
         
@@ -292,7 +292,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                             <ul class="dropdown-menu" id="dLabel" aria-labelledby="drop6"> 
                               <li><a href="#" onclick="editPrice('<?php echo $price['pp_qty'];?>', '<?php echo $price['pp_price']; ?>', '<?php echo $price['pp_id'];?>')">Edit</a></li> 
                               <li role="separator" class="divider"></li> 
-                              <li><a href="#">Delete</a></li> 
+                              <li><a href="<?php echo $admin_url; ?>module/product/aksi_hapus_price.php?pp_id=<?php echo $price['pp_id'];?>">Delete</a></li> 
                             </ul>
 
         
