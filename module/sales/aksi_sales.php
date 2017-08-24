@@ -15,10 +15,23 @@
 		$product = mysqli_query($koneksi,$product);
 		$product = mysqli_fetch_array($product);
 
-		$_SESSION['productList'][] = $product;
+		if(array_key_exists('id_product', $product)){
+			$_SESSION['productList'][] = $product;
+		}		
 
 		// redirect back
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+	}
+
+	if(isset($_POST['aksi_getPriceQty'])){
+
+		$price = "select * from cera_product_price where pp_id=".$_POST['pp_id'];
+		$price = mysqli_query($koneksi,$price);
+		$price = mysqli_fetch_array($price);
+		
+		header('Content-Type: application/json');
+		echo json_encode($price);
 
 	}
 

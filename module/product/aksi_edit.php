@@ -24,7 +24,9 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 	$path = "../../upload/" . $nama_file;
 
 	if($nama_file==""){
-	$querySimpan = mysqli_query($koneksi,"UPDATE cera_product SET product_name='$namaProduk',product_code='$kodeProduk',product_desc='$deskripsiProduk' WHERE id_product='$idProduk'");
+
+	   $querySimpan = mysqli_query($koneksi,"UPDATE cera_product SET product_name='$namaProduk',product_code='$kodeProduk',product_desc='$deskripsiProduk' WHERE id_product='$idProduk'");
+
 	} else {
 		   move_uploaded_file($tmp_file, $path);// Cek apakah gambar berhasil diupload atau tidak
                 // Jika gambar berhasil diupload, Lakukan :

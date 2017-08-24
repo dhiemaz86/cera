@@ -164,18 +164,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 						<li>
 							<a href="adminweb.php?module=sales"> <i class="fa fa-shopping-cart"></i> <span>Sales</span> </a>
 						</li>
-						<li>
-							<a href="adminweb.php?module=quotation"> <i class="fa fa-money"></i> <span>Quotation</span> </a>
-						</li>
-						<li>
-							<a href="adminweb.php?module=purchase_order"> <i class="fa fa-bar-chart"></i> <span>Purchase Order</span> </a>
-						</li>
-            			<li>
-            				<a href="adminweb.php?module=invoice"> <i class="fa fa-bar-chart"></i> <span>Invoice</span> </a>
-          				</li>
-						<li>
-							<a href="adminweb.php?module=kwitansi"> <i class="fa fa-users"></i> <span>Kwitansi</span> </a>
-						</li>
+						
            				 <li>
             				<a href="adminweb.php?module=client"> <i class="fa fa-users"></i> <span>Client</span> </a>
          	 			</li>
@@ -376,6 +365,27 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
 		  		}
 		    }
 		  ?>
+
+		  /* get price and wty from select */
+		  function setPriceQtyQuotation(el,a){
+		  	console.log(a);
+
+		  	$.ajax({
+		  		url : 'module/sales/aksi_sales.php',
+		  		type : 'post',
+		  		data : { aksi_getPriceQty : 'adajah', pp_id : a },
+		  		success : function(data){
+		  			console.log(data);
+		  			// set value qty
+		  			var td = el.parent();
+		  			var tr = td.parent();
+
+		  			tr.find('.qty').val(data.pp_qty);
+		  			tr.find('.price').val(data.pp_price);
+		  		}
+
+		  	});
+		  }
 		</script>
 
 	      <script type="text/javascript" src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>

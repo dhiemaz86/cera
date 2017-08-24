@@ -79,13 +79,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                               </div>
                             </div>
 
-                            <div class="form-group">
-                              <label for="inputEmail3" class="col-sm-2 control-label">Harga</label>
-                              <div class="col-sm-10">
-                                <input type="number" class="form-control" id="hargaProduk" name="hargaProduk" placeholder="Harga">
-                              </div>
-                            </div>
-
                              <div class="form-group">
                               <label for="inputEmail3" class="col-sm-2 control-label">Deskripsi Produk</label>
                               <div class="col-sm-10">
@@ -207,9 +200,9 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                         <div class="box-body">
 
                           <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Qty</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Quantity</label>
                             <div class="col-sm-10">
-                              <input type="number" class="form-control" id="qty" name="qty" placeholder="Kode Produk">
+                              <input type="number" class="form-control" id="qty" name="qty" placeholder="Jumlah">
                               <input type="hidden" class="form-control" name="product_id" value="<?php echo $data['id_product'];?>">
                             </div>
                           </div>
