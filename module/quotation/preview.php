@@ -1,1 +1,0 @@
-<body onLoad="window.print()">
