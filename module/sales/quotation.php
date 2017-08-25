@@ -281,7 +281,7 @@
 
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Print</button>
+                       <a href="adminweb.php?module=print_detail_quotation&id_sales=<?php echo $pro['sales_id'];?>"><button class="btn btn-primary">Print</button></a>
                       </div>
                     </div>
                   </div>

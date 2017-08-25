@@ -239,6 +239,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])) {
                 include "module/quotation/form_tambah.php";
             } elseif ($_GET['module'] == 'edit_quotationn') {
                 include "module/quotation/form_edit.php";
+            } elseif ($_GET['module'] == 'print_detail_quotation') {
+                include "module/quotation/print_details.php";    
             }elseif ($_GET['module'] == 'print_quotation') {
                 include "module/quotation/print_quotation.php";
 
