@@ -104,7 +104,9 @@ echo"<tr>
                       <td>$sales[si_item_qty]</td>
                       <td>Rp$price</td>
                       <td>Rp$total</td>
-                      <td>$sales[product_img]</td>
+                      <td>
+                      <img id='profile-img' class='profile-img-card' style='width: 150px; height: 150px;'' src='upload/$sales[product_img]' />
+                      </td>
 </tr>";
 
 //} 
