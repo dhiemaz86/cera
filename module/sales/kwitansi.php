@@ -51,7 +51,7 @@
 
             <div class="box-footer">
        <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_kwitansi"><button class="btn btn-primary">Tambah Kwitansi</button></a>
-       <a href="<?php echo $base_url; ?>adminweb.php?module=print_kwitansi"><button class="btn btn-primary">Print Kwitansi</button></a>
+       <a href="adminweb.php?module=print_kwitansi"><button class="btn btn-primary">Print Kwitansi</button></a>
                  </div><!-- /.box-footer -->
              </div><!-- /.box -->
 

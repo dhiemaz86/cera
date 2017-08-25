@@ -13,7 +13,7 @@
   popupWin.document.write('</html>');
   popupWin.document.close();
   
- window.location = 'adminweb.php?module=kwitansi';
+ window.location = 'adminweb.php?module=sales';
  }
   function PrintPreview() {
   var toPrint = document.getElementById('print');

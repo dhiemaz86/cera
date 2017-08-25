@@ -58,7 +58,7 @@
 
              <div class="box-footer">
              <a href="<?php echo $base_url; ?>adminweb.php?module=tambah_po"><button class="btn btn-primary">Tambah PO</button></a>
-             <a href="<?php echo $base_url; ?>admin/adminweb.php?module=print_po"><button class="btn btn-primary">Print</button></a>
+             <a href="adminweb.php?module=print_po"><button class="btn btn-primary">Print</button></a>
                   </div><!-- /.box-footer -->
               </div><!-- /.box -->
 

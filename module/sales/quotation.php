@@ -5,8 +5,7 @@
         <h3 class="box-title">Data Quotation</h3>
         <br>
         <button class="btn btn-primary" data-toggle="modal" data-target="#newquotation">Tambah Quotation</button>
-        <button class="btn btn-primary">Print</button>
-        <br>
+       <a href="adminweb.php?module=print_quotation"><button class="btn btn-primary">Print</button></a>  <br>
 
         <!--- Modal For Tambah -->
 
