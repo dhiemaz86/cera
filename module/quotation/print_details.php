@@ -56,7 +56,6 @@ print"<img src=\"$image\" width=\"90%\" height=\"50%\"\/>";
 $image="../cera/module/quotation/image/newquotation.png";
 print"<img src=\"$image\" width=\"50%\" height=\"80%\"\/> <br>";
 
-echo" $sale[sales_quotation_no]";
 
 ?>
 
@@ -74,11 +73,36 @@ print"<img src=\"$imagex\" width=\"80%\" height=\"35%\"\/>";
 ?>
 </td>
 </tr>
+
+
+</table>
+<?php
+$client=$sale['sales_nama_client'];
+$alamat=$sale['sales_alamat_client'];
+?>
+<table border="0" width="90%" align="center">
+<tr>
+  <td width="10%">
+  </td>
+  <td>
+    <?php
+echo" $sale[sales_quotation_no]";  ?> <br><br>
+  
+</td>
+</tr>
+<tr><td colspan="2">
+<teks>
+Kepada Yth: <br>
+Bapak/ibu <?php print" $client"; ?><br>
+di <?php print" $alamat"; ?>. <br>
+Berikut keterangan harga untuk produk : <br><br>
+</teks> </td> 
+ 
+</tr>   
 </table>
 
-
     <table border="1" width="90%" align="center">
-    <tr>
+    <tr align="center">
                       <th>No</th>
                       <th>Jenis Produk</th>            
                       <th>Jumlah</th>
@@ -98,22 +122,36 @@ $price= number_format($sales['si_item_price'],2,',','.');
 //$sql=mysqli_query($koneksi, "select * from cera_user");
 //while($mem=mysqli_fetch_array($sql)){
 
-echo"<tr>
+echo"<tr align='center' >
                       <td>$nomer</td>
                       <td>$sales[product_name]</td>
                       <td>$sales[si_item_qty]</td>
                       <td>Rp$price</td>
                       <td>Rp$total</td>
                       <td>
-                      <img id='profile-img' class='profile-img-card' style='width: 150px; height: 150px;'' src='upload/$sales[product_img]' />
+                      <img id='profile-img' class='profile-img-card' style='width: 200px; height: 200px;'' src='upload/$sales[product_img]' />
                       </td>
 </tr>";
 
 //} 
 ?>
 
+<table border="0" width="90%" align="center">
 
-
+<tr><td colspan="2">
+<teks>
+<br><br>
+<b>*bahan baku dapat berubah sewaktu-waktu <br>
+*stok berjalan <br>
+*lama produksi 3-4 minggu <br>
+*belum termasuk ongkir dan pajak <br>
+</b> <br>
+Demikian penawaran harga dari kami, terimakasih sudah menghubungi kami besar harapan kami dapat bermitra dengan perusahaan Anda, salam sukses dari kami . <br>
+Terimakasih. <br>
+</teks> </td> 
+ 
+</tr>   
+</table>
 
 
 </table>
