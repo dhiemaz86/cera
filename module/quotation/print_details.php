@@ -69,7 +69,7 @@ print"<img src=\"$image\" width=\"50%\" height=\"80%\"\/> <br>";
 
 
 $imagex="../cera/module/quotation/image/penghargaan.png";
-print"<img src=\"$imagex\" width=\"80%\" height=\"35%\"\/>";
+print"<img src=\"$imagex\" width=\"80%\" height=\"40%\"\/>";
 ?>
 </td>
 </tr>
